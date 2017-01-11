@@ -11,7 +11,8 @@ module SpreeFeeds
       end
 
       def description
-        strip_tags(@product.description).gsub("\n", ' ').gsub("\r", '').squeeze(' ').strip
+        sanitized_description = strip_tags(@product.description)
+        sanitized_description ? sanitized_description.gsub("\n", ' ').gsub("\r", '').squeeze(' ').strip : ''
       end
 
     end
